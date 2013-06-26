@@ -1,0 +1,142 @@
+import time
+import random
+
+
+
+print('  ________                                  ')
+print(' /  _____/ __ __   ____   ______ ______     ')
+print('/   \  ___|  |  \_/ __ \ /  ___//  ___/     ')
+print('\    \_\  \  |  /\  ___/ \___ \ \___ \      ')
+print(' \______  /____/  \___  >____  >____  >     ')
+print('        \/            \/     \/     \/      ')
+print('___________.__                              ')
+print('\__    ___/|  |__   ____                    ')
+print('  |    |   |  |  \_/ __ \                   ')
+print('  |    |   |   Y  \  ___/                   ')
+print('  |____|   |___|  /\___  >                  ')
+print('                \/     \/                   ')
+print(' _______               ___.                 ')
+print(' \      \  __ __  _____\_ |__   __________  ')
+print(' /   |   \|  |  \/     \| __ \_/ __ \_  __ \ ')
+print('/    |    \  |  /  Y Y  \ \_\ \  ___/|  | \/')
+print('\____|__  /____/|__|_|  /___  /\___  >__|   ')
+print('        \/            \/    \/     \/       ')
+print('Version 1.0')
+print('')
+print('This is a number guessing game. If you choose the hard difficulty, ')
+print('you will have three chances to guess a number between 1 and 30. If ')
+print('you choose the easy difficulty, you will have five chances to guess ')
+print('a number between 1 and 20. Good luck!')
+print('')
+
+
+
+print('Hello! What is your name?')
+
+myName = input()
+
+def game():
+    
+    guessesTaken=1
+
+
+    yourDif = ''
+    while yourDif != 'hard' and yourDif != 'easy' and yourDif != 'e':
+        print('Would you like to play on hard or easy?')
+
+        yourDif = input()
+
+        if yourDif == 'hard':
+            guessesTaken = guessesTaken + 2
+            print('You are now on hard mode, and you will have only three guesses. Good luck!')
+            print()
+            number = random.randint(1, 30)
+
+        if yourDif == 'Hard':
+            guessesTaken = guessesTaken + 2
+            print('You are now on hard mode, and you will have only three guesses. Good luck!')
+            print()
+            number = random.randint(1, 30)
+
+        if yourDif == 'h':
+            guessesTaken = guessesTaken + 2
+            print('You are now on hard mode, and you will have only three guesses. Good luck!')
+            print()
+            number = random.randint(1, 30)
+
+        if yourDif == 'easy':
+            guessesTaken = guessesTaken
+            print('You are now on easy mode, and you will have five chances. Good luck!')
+            print()
+            number = random.randint(1, 20)
+
+        if yourDif == 'Easy':
+            guessesTaken = guessesTaken
+            print('You are now on easy mode, and you will have five michchances. Good luck!')
+            print()
+            number = random.randint(1, 20)
+
+        if yourDif == 'e':
+            guessesTaken = guessesTaken
+            print('You are now on easy mode, and you will have six chances. Good luck!')
+            print()
+            number = random.randint(1, 20)
+    
+        if yourDif == 'E':
+            guessesTaken = guessesTaken
+            print('You are now on easy mode, and you will have six chances. Good luck!')
+            print()
+            number = random.randint(1, 20)
+
+
+   
+    time.sleep(2)
+
+    print('Well, ' + myName + ' I am thinking of a number between 1 and 20')
+
+        
+    while guessesTaken < 6:
+        print ('Take a guess')
+        guess = input()
+        guess = int(guess)
+        
+
+        if yourDif == 'easy' or yourDif == 'e':
+            if guess > 20:
+                print('Guess lower than 21')
+            if guess < number and guess < 21:
+                print ('Your guess is too low, try again.')
+                guessesTaken = guessesTaken + 1
+            if guess > number and guess < 21:
+                print ('Your guess is too high, try again.')
+                guessesTaken = guessesTaken + 1
+
+        if yourDif == 'hard' or yourDif == 'h':
+            if guess > 20:
+                print('Guess lower than 31')
+            if guess > number and guess < 31:
+                print ('Your guess is too high, try again.')
+                guessesTaken = guessesTaken + 1
+            if guess < number and guess < 31:
+                print ('Your guess is too low, try again.')
+                guessesTaken = guessesTaken + 1
+
+        if guess == number:
+            break  
+
+
+    if guess == number:
+        guessesTaken = str(guessesTaken)
+        print('Congratulations, you guessed my number in ' + guessesTaken + ' tries')
+
+    if guess != number:
+        number = str(number)
+        print('Sorry, ' + myName + ' the number I was thinking of is ' + number)
+
+playAgain = 'yes'
+while playAgain == 'yes' or playAgain == 'y':
+    game()
+    print('')
+    print('Do you want to play again?')
+    print('')
+    playAgain = input()
