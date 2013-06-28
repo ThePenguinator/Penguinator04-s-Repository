@@ -1,0 +1,53 @@
+import time
+import random
+def createCharacter():
+    print('''So... You are ready to embark on your great journey, young dwarf, but like every
+famous hero, you need a name. What shall your name be?''')
+    global name
+    name = input()
+    print('Ahhh, I see a great future for you ' + name + '. So, where are you from?')
+    global town
+    town = input()
+    print('I have never heard of ' + town + ' but I suppose it is very nice.')
+    print()
+    time.sleep(2)
+    print('Are you ready to embark on your journey, ' + name + '?')
+    play = input()
+    if play == 'yes':
+        time.sleep(1)
+        displayIntro()
+        print()
+
+def journey():
+    print('Next update will have journey')
+
+
+def displayIntro():
+    print('''In a mystical land unknown to us humans, a small dwarf by the name of ''' + name + ''' has overheard the
+local villagers in his cozy town of ''' + town + '''talking about the great treasures of a fallen empire. Unbeknownst
+to him at the time, ''' + name + ''' would end up going on one of the most remarkable adventures
+of his time (that is, if he will survive the journey)''')
+    print()
+    time.sleep(10)
+    print('''You wake up in your small hut house that you have lived in since you were a tiny
+dwarf. Today's the big day! You have said your goodbyes, and will soon be off on your goblin
+fighting adventure. Do you want to search your house for some useful supplies, or do you want
+to embark on your journey now? (search or embark?) (WARNING: It is rumored that dragons wander
+in the forests late at night, so make sure not to spend too long searching!''')
+    global search
+    search = input()
+    if search == 'search':
+        global random1
+        random1 = random.randint(0, 3)
+        if random1 == 1:
+            print('You spend a few hours searching through your hut, but found nothing.')
+        if random1 == 2:
+            print('You spent a few hours searching your hut, but you found a sword.')
+        if random1 == 3:
+            print('You spent a few hours searching your hut, and found enough food to last a few days.')
+        print('You will now embark on your journey. It may be dangerous, so good luck!')
+        journey()
+    if search == 'embark':
+        print('You will now embark on your journey. It may be dangerous, so good luck!')
+
+createCharacter()
