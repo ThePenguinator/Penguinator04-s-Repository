@@ -1,0 +1,294 @@
+import time
+import random
+
+
+
+
+def createCharacter():
+    print('''
+  _____                      __
+ |  __ \                    / _|
+ | |  | |_      ____ _ _ __| |_
+ | |  | \ \ /\ / / _` | '__|  _|
+ | |__| |\ V  V / (_| | |  | |
+ |_____/  \_/\_/ \__,_|_|  |_|
+   ____                  _
+  / __ \                | |
+ | |  | |_   _  ___  ___| |_
+ | |  | | | | |/ _ \/ __| __|
+ | |__| | |_| |  __/\__ \ |_
+  \___\_\\__,_|\___||___/\__|
+           ___  __
+          / _ \/_ |
+   __   _| | | || |
+   \ \ / / | | || |
+    \ V /| |_| || |
+     \_(_)\___/ |_|
+
+''')
+    print()
+    time.sleep(1)
+    print('''
+  *******************************************************************************
+          |                   |                  |                     |
+ _________|________________.=""_;=.______________|_____________________|_______
+|                   |  ,-"_,=""     `"=.|                  |
+|___________________|__"=._o`"-._        `"=.______________|___________________
+          |                `"=._o`"=._      _`"=._                     |
+ _________|_____________________:=._o "=._."_.-="'"=.__________________|_______
+|                   |    __.--" , ; `"=._o." ,-"""-._ ".   |
+|___________________|_._"  ,. .` ` `` ,  `"-._"-._   ". '__|___________________
+          |           |o`"=._` , "` `; .". ,  "-._"-._; ;              |
+ _________|___________| ;`-.o`"=._; ." ` '`."\` . "-._ /_______________|_______
+|                   | |o;    `"-.o`"=._``  '` " ,__.--o;   |
+|___________________|_| ;     (#) `-.o `"=.`_.--"_o.-; ;___|___________________
+____/______/______/___|o;._    "      `".o|o_.--"    ;o;____/______/______/____
+/______/______/______/_"=._o--._        ; | ;        ; ;/______/______/______/_
+____/______/______/______/__"=._o--._   ;o|o;     _._;o;____/______/______/____
+/______/______/______/______/____"=._o._; | ;_.--"o.--"_/______/______/______/_
+____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
+/______/______/______/______/______/______/______/______/______/______/_____/__
+*******************************************************************************
+''')
+    time.sleep(1)
+
+
+
+    print('''So... You are ready to embark on your great journey, young dwarf, but like every
+famous hero, you need a name. What shall your name be?''')
+    global name
+    name = input()
+    print('Ahhh, I see a great future for you ' + name + '. So, where are you from?')
+    global town
+    town = input()
+    print('I have never heard of ' + town + ' but I suppose it is very nice.')
+    print('')
+    time.sleep(2)
+    print('Are you ready to embark on your journey, ' + name + '?')
+    play = input()
+    if play == 'yes':
+        time.sleep(1)
+        displayIntro()
+        print()
+
+def playAgain():
+    print('Do you want to play again?')
+    print('')
+    global playAgain
+    playAgain = input()
+    if playAgain == 'yes':
+        createCharacter()
+
+def journey():
+    print('')
+    print('''While you are leaving ''' + town + ''', one of the local villagers decides to give
+you some 100 gold coins in order to buy better gear, clothes, and potions. In return you promise to
+give him some of your treasure when you return. Now that you have some funds, you decide to take a
+look around Logmir's General Store to see what he has''')
+    print('')
+    time.sleep(4)
+    global coins
+    coins = 0
+    coins = coins + 100
+    print('')
+    print('''As you walk into old Logmir's shop, you see a really nice potion that you would
+love to take along on your journey. It is a bit expensive for you, but there is no sign
+of old Logmir and you may be able to sneak it in your bag. Do you want to steal it?''')
+    global stealPotion
+    stealPotion = input()
+    random2 = random.randint(1, 2)
+
+    if stealPotion == 'yes':
+        if random2 == 2:
+            print(''' As you put the potion of healing in your bag, Logmir walks into the store. He catches you and
+calls over the guards, and you will be sent to prison. Game over.''')
+            playAgain()
+        if random2 == 1:
+            print(''' You slip the potion of healing into your bag, and you don\'t think anyone caught you.
+After a few minutes of waiting around, Logmir walks in. He doesn't seem to notice that the potion is missing.
+Do you want to buy items from him to help you on the journey, or do you want to leave just in case he finds out?
+(buy or leave)''')
+            time.sleep(2)
+            global buyorleave
+            buyorleave = input()
+            if buyorleave == 'buy':
+                print('" I have some great items for sale here ' + name + '."')
+                time.sleep(1)
+                print()
+                print('Logmir hands you a list of the items he has. Take a look, to see what you like')
+                time.sleep(1)
+                print()
+                print('Balance: You have ' + str(coins) + 'coins, make sure not to buy over your limit!')
+                time.sleep(1)
+                print('''
+_______________________________________________________________________________
+|                      Logmir's Items                                          |
+|                                                                              |
+|                                                                              |
+|            /\                                                                |
+|  _         )( ______________________     Old Sword: 20 gold coins            |
+| (_)///////(**)______________________>       Description: Logmir's old sword  |
+|            )(                                            that is for sale.   |
+|            \/                                            This should help    |
+|                                                          along my journey    |
+|                                             To buy: type 'sword' (no quotes) |
+|                                                     and press enter          |
+|                                                                              |
+|                                                                              |
+|       |`-._/\_.-`|                       Shield: 25 gold coins               |
+|       |    ||    |                          Description: This worn shield    |
+|       |___o()o___|                                       should help defend  |
+|       |__((<>))__|                                       you during battle.  |
+|       \   o\/o   /                          To buy: type 'shield' (no quotes)|
+|        \   ||   /                                   and press enter          |
+|         \  ||  /                                                             |
+|          '.||.'                                                              |
+|            ``                                                                |
+|                                                                              |
+|          _____                                                               |
+|         `.___,'                          Potion: 10 gold coins               |
+|          (___)                              Description: This potion of      |
+|          <   >                                           healing will regain |
+|           ) (                                            some health before  |
+|          /`-.\                                           battle.             |
+|         /     \                             To buy: type 'potion' (no quotes)|
+|        / _    _\                                    and press enter          |
+|       :,' `-.' `:                                                            |
+|       |         |                                                            |
+|       :         ;                                                            |
+|        \       /                                                             |
+|         `.___.'         *if you do not wish to buy anything type 'no'        |
+|                            (without quotes) and press enter                  |
+|______________________________________________________________________________|
+''')
+
+        logmirStore()
+
+
+    if stealPotion == 'no':
+        print('" I have some great items for sale here ' + name + '."')
+        print()
+        print('Logmir hands you a list of the items he has. Take a look, to see what you like')
+        print()
+        print('Balance: You have ' + str(coins) + ' coins, make sure not to buy over your limit!')
+
+        print('''
+_______________________________________________________________________________
+|                      Logmir's Items                                          |
+|                                                                              |
+|                                                                              |
+|            /\                                                                |
+|  _         )( ______________________     Old Sword: 20 gold coins            |
+| (_)///////(**)______________________>       Description: Logmir's old sword  |
+|            )(                                            that is for sale.   |
+|            \/                                            This should help    |
+|                                                          along my journey    |
+|                                             To buy: type 'sword' (no quotes) |
+|                                                     and press enter          |
+|                                                                              |
+|                                                                              |
+|       |`-._/\_.-`|                       Shield: 25 gold coins               |
+|       |    ||    |                          Description: This worn shield    |
+|       |___o()o___|                                       should help defend  |
+|       |__((<>))__|                                       you during battle.  |
+|       \   o\/o   /                          To buy: type 'shield' (no quotes)|
+|        \   ||   /                                   and press enter          |
+|         \  ||  /                                                             |
+|          '.||.'                                                              |
+|            ``                                                                |
+|                                                                              |
+|          _____                                                               |
+|         `.___,'                          Potion: 10 gold coins               |
+|          (___)                              Description: This potion of      |
+|          <   >                                           healing will regain |
+|           ) (                                            some health before  |
+|          /`-.\                                           battle.             |
+|         /     \                             To buy: type 'potion' (no quotes)|
+|        / _    _\                                    and press enter          |
+|       :,' `-.' `:                                                            |
+|       |         |                                                            |
+|       :         ;                                                            |
+|        \       /                                                             |
+|         `.___.'         *if you do not wish to buy anything type 'no'        |
+|                            (without quotes) and press enter                  |
+|______________________________________________________________________________|
+''')
+
+        logmirStore()
+
+def journeyone():
+    print('Next update!')
+
+def logmirStore():
+    global logmir
+    logmir = input()
+    if logmir == 'sword':
+        coins = coins - 20
+        global attack
+        attack = 0
+        attack = attack + 2
+        print('You purchased the Old Sword from Logmir for 20 gold coins. You now have' + str(coins) + ' coins left.')
+    if logmir == 'potion':
+        coins = coins - 10
+        global potions
+        potions = 0
+        potions = potions + 1
+        print('You purchased a potion from Logmir for 10 gold coins. You now have' +str(coins) + ' coins left.')
+    if logmir == 'shield':
+        coins = coins - 25
+        global defense
+        defense = 0
+        defense = defense + 3
+        print('You purchased a shield from Logmir for 25 gold coins. You now have' +str(coins) + ' coins left.')
+    print('')
+    time.sleep(1)
+    print('Would you like to buy another item or would you like to leave the store and continue on your journey?')
+    buyorleave = ''
+    buyorleave = input()
+    if buyorleave == 'buy':
+        logmirStore()
+    if buyorleave == 'leave':
+        journeyone()
+
+
+def displayIntro():
+    print('''In a mystical land unknown to us humans, a small dwarf by the name of ''' + name + ''' has overheard the
+local villagers in his cozy town of ''' + town + ''' talking about the great treasures of a fallen empire. Unbeknownst
+to him at the time, ''' + name + ''' would end up going on one of the most remarkable adventures
+of his time (that is, if he will survive the journey)''')
+    print()
+    time.sleep(10)
+    print('''You wake up in your small hut house that you have lived in since you were a tiny
+dwarf. Today's the big day! You have said your goodbyes, and will soon be off on your goblin
+fighting adventure. Do you want to search your house for some useful supplies, or do you want
+to embark on your journey now? (search or embark?) (WARNING: It is rumored that dragons wander
+in the forests late at night, so make sure not to spend too long searching!''')
+    global search
+    search = input()
+    if search == 'search':
+        global random1
+        random1 = random.randint(0, 3)
+        if random1 == 1:
+            time.sleep(2)
+            print('You spend a few hours searching through your hut, but found nothing.')
+        if random1 == 2:
+            time.sleep(2)
+            print('You spent a few hours searching your hut, but you found a sword.')
+            global sword
+            sword = 1
+        if random1 == 3:
+            time.sleep(2)
+            print('You spent a few hours searching your hut, and found enough food to last a few days.')
+            global food
+            food = 10
+        print('You will now embark on your journey. It may be dangerous, so good luck!')
+        time.sleep(1)
+        journey()
+    if search == 'embark':
+
+        print('You will now embark on your journey. It may be dangerous, so good luck!')
+        time.sleep(1)
+        journey()
+
+createCharacter()
+
